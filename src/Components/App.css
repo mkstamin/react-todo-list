@@ -1,0 +1,25 @@
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: 100vh;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+}
+
+.container__items {
+  background-color: #ffffff;
+  -webkit-box-shadow: 5px 5px 15px -3px grey;
+          box-shadow: 5px 5px 15px -3px grey;
+  border-radius: 5px;
+  padding: 0 5% 5% 5%;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.container__items h3 {
+  text-align: center;
+  color: gray;
+}

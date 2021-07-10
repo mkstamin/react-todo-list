@@ -1,0 +1,31 @@
+.container-list {
+  margin-top: 5%;
+
+  .list {
+    display: flex;
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      margin-bottom: 3%;
+    }
+
+    &__action * {
+      cursor: pointer;
+      padding-left: 10px;
+    }
+
+    .list__action--edit {
+      color: lightseagreen;
+    }
+
+    .list__action--delet {
+      color: maroon;
+    }
+  }
+  .display-none {
+    display: none;
+  }
+  .display-block {
+    display: block;
+  }
+}
