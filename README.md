@@ -11,15 +11,21 @@ Follow the instructions below to run it:
 
 1. Clone this repository
    ```sh
-   git clone https://github.com/mkstamin/react-project-structur.git
+   git clone https://github.com/mkstamin/react-project-setup.git
    ```
 2. Run
    ```sh
-   yarn
+   yarn install
    ```
-3. It will be run in http://localhost:3000
+3. Run
+   ```sh
+   yarn start
+   ```   
+4. It will be run in http://localhost:3000
+
 
 <!-- Editor Setup -->
+# OR
 
 ## Editor Setup
 
