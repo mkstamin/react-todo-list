@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import Alert from '../alert/Alert';
 import TodoList from '../todolists/TodoList';
 import './AddTodo.css';
 
@@ -14,35 +15,69 @@ const getStorage = () => {
 
 const AddTodo = () => {
     const [items, setItems] = useState(getStorage());
-    const [edit, setEdit] = useState({});
-    const textInput = useRef(null);
+    const [add, setAdd] = useState();
+    const [edit, setEdit] = useState();
+    const [alert, setAlert] = useState({ type: '', message: '' });
 
+    // Alert semmage
+    const showAlert = (type, message) => setAlert({ type, message });
+
+    // Add and Edit items
     const addItem = (e) => {
         e.preventDefault();
-        const inputValue = textInput.current.value;
-        const newValue = { id: new Date().getTime(), title: inputValue };
-        setItems([...items, newValue]);
-        textInput.current.value = '';
+
+        if (typeof edit === 'object') {
+            // For edit & update
+            const { id } = edit;
+            setItems(
+                items.map((item) => {
+                    if (item.id === id) {
+                        return { ...item, title: add };
+                    }
+                    return item;
+                })
+            );
+            showAlert('success', 'Edit successfully');
+            setEdit('');
+            setAdd('');
+        } else {
+            // This is for add items
+            const newValue = { id: new Date().getTime(), title: add };
+            setItems([...items, newValue]);
+            showAlert('success', 'item add successfully');
+            setAdd('');
+        }
     };
 
     useEffect(() => {
         localStorage.setItem('myList', JSON.stringify(items));
     }, [items]);
 
-    console.log(Object.keys(edit).length <= 0);
-
     return (
         <>
+            <Alert alert={alert} removeAlert={showAlert} />
             <div className="todo-container">
                 <div className="todo-container__input">
-                    {/* এখানে আমাকে onChange() নিয়ে কাজ করতে হবে। অন্য ক্ষেত্র value শুধু read only । ওন চেঞ্জ এ রিড রাইট দুটাই সম্ভব */}
-                    <input ref={textInput} type="text" placeholder="e:g: tea" value={edit.title} />
+                    <input
+                        onChange={(e) => setAdd(e.target.value)}
+                        value={add || ''}
+                        type="text"
+                        placeholder="e:g: tea"
+                    />
                 </div>
                 <div onClick={addItem} role="button" tabIndex="0" className="todo-container__btn">
-                    <button type="button">Add Item</button>
+                    <button type="button">
+                        {typeof edit !== 'object' ? 'Add' : 'Update'} Item
+                    </button>
                 </div>
             </div>
-            <TodoList items={items} setItems={setItems} setEdit={setEdit} />
+            <TodoList
+                items={items}
+                setItems={setItems}
+                setAdd={setAdd}
+                setEdit={setEdit}
+                showAlert={showAlert}
+            />
         </>
     );
 };

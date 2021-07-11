@@ -35,3 +35,14 @@
 .container-list .display-block {
   display: block;
 }
+
+.container-list .clear-btn {
+  margin-bottom: -3%;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  word-spacing: 5px;
+  font-weight: 700;
+  color: #d62222;
+}

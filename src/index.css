@@ -5,10 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #F1F5F8;
+  background-image: linear-gradient( to right bottom, 
+  rgb(14, 99, 14), 
+  rgba(34, 107, 34, 0.822), 
+  rgba(29, 102, 53, 0.322));
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.alert p{
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.alert--success{
+  color: rgb(23, 131, 23);
+}
+.alert--danger{
+  color:#d62222;
 }

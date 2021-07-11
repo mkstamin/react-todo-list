@@ -10,8 +10,8 @@
 
 .container__items {
   background-color: #ffffff;
-  -webkit-box-shadow: 5px 5px 15px -3px grey;
-          box-shadow: 5px 5px 15px -3px grey;
+  -webkit-box-shadow: 1px 4px 15px -3px black;
+          box-shadow: 1px 4px 15px -3px black;
   border-radius: 5px;
   padding: 0 5% 5% 5%;
   -ms-grid-column: 2;
