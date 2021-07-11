@@ -26,7 +26,9 @@ const AddTodo = () => {
     const addItem = (e) => {
         e.preventDefault();
 
-        if (typeof edit === 'object') {
+        if (!add) {
+            showAlert('danger', 'please provide a value');
+        } else if (typeof edit === 'object') {
             // For edit & update
             const { id } = edit;
             setItems(
